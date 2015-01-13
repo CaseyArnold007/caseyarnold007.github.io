@@ -48,6 +48,7 @@ footer span { float: right; font-style: italic; }
   header p { padding-left: 4.5em;}
 }
 
+/*Moved data below from print.css to this page*/
 @media print {
   * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; }
   a, a:visited { color: #444 !important; text-decoration: underline; }
