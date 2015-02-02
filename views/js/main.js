@@ -502,12 +502,12 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
-  for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+  var sTop = document.body.scrollTop / 1250;
+  for (var i = 0; i < numOfItems; i++) {
+    var phase = Math.sin((sTop) + (i % 5));
+    items[i].style.transform = 'translateX(' + (100*phase) + 'px)';
   }
-
+  //learned translate tip from @1198 and Nathan Miller on piazza
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
   window.performance.mark("mark_end_frame");
@@ -522,19 +522,24 @@ function updatePositions() {
 window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
-//Changed pizzas from 200 to 20
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 20; i++) {
+  for (var i = 0; i < 200; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
-    elem.basicLeft = (i % cols) * s;
+    //elem.basicLeft = (i % cols) * s;
+    elem.style.left = ((i % cols) * s) + 'px';
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
+  //moved these to global scope here because they are not created
+  //until the .mover class is loaded by the above code and 
+  //it must be before updatePositions is called at the end
+items = document.querySelectorAll('.mover');
+numOfItems = items.length;
   updatePositions();
 });
