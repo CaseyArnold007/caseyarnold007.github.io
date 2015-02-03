@@ -503,12 +503,12 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var sTop = document.body.scrollTop / 1250;
+  var scrTop = document.body.scrollTop / 1250;
   for (var i = 0; i < numOfItems; i++) {
-    var phase = Math.sin((sTop) + (i % 5));
+    var phase = Math.sin((scrTop) + (i % 5));
     items[i].style.transform = 'translateX(' + (100*phase) + 'px)';
   }
-  //learned translate tip from @1198 and Nathan Miller on piazza
+  //learned the translate tip from @1198 and Nathan Miller on piazza
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
   window.performance.mark("mark_end_frame");
