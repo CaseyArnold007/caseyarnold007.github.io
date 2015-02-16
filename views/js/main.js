@@ -430,7 +430,7 @@ var resizePizzas = function(size) {
     return dx;
   }
 
-  // Took some variables out from the loop
+  // Adjusted variables within the loop
   function changePizzaSizes(size) {
     var randPizzaContainers = document.getElementsByClassName("randomPizzaContainer");
     var dx = determineDx(randPizzaContainers[3], size);
@@ -517,6 +517,7 @@ function updatePositions() {
 window.addEventListener('scroll', onScroll, false);
 
 // Moved duplicate CSS attributes to style section in index.html
+//Optimized pizza.png
 document.addEventListener('DOMContentLoaded', 
   window.requestAnimationFrame(function() {
   var cols = 8;
