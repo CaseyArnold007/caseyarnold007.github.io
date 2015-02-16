@@ -516,7 +516,6 @@ function updatePositions() {
 // Optimized with new scroll tracer
 window.addEventListener('scroll', onScroll, false);
 
-// Optimized with appropriate image size and rAF
 // Moved duplicate CSS attributes to style section in index.html
 document.addEventListener('DOMContentLoaded', 
   window.requestAnimationFrame(function() {
