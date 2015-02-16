@@ -517,7 +517,6 @@ function updatePositions() {
 window.addEventListener('scroll', onScroll, false);
 
 // Moved duplicate CSS attributes to style section in index.html
-//Optimized pizza.png
 document.addEventListener('DOMContentLoaded', 
   window.requestAnimationFrame(function() {
   var cols = 8;
