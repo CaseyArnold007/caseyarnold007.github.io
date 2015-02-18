@@ -478,26 +478,6 @@ function logAverageFrame(times) {
   console.log("Average time to generate last 10 frames: " + sum / 10 + "ms");
 }
 
-// items has taken out from the loop since it's value doesn't change
-var items = document.getElementsByClassName('mover'),
-    lastScrollY = 0,
-    ticking = false;
-
-// Callback for our scroll event - just
-// keeps track of the last scroll value
-function onScroll() {
-    lastScrollY = window.scrollY;
-    requestTick();
-}
-
-// Calls rAF if it's not already been done already
-function requestTick() {
-    if(!ticking) {
-        window.requestAnimationFrame(updatePositions);
-        ticking = true;
-    }
-}
-
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
@@ -507,14 +487,15 @@ function updatePositions() {
     var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
-  
+
+  // User Timing API to the rescue again. Seriously, it's worth learning.
+  // Super easy to create custom metrics.
   window.performance.mark("mark_end_frame");
   window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
   if (frame % 10 === 0) {
     var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
     logAverageFrame(timesToUpdatePosition);
   }
-  ticking = false;
 }
 
 // Optimized with new scroll tracer
