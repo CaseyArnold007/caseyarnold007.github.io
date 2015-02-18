@@ -498,24 +498,22 @@ function updatePositions() {
   }
 }
 
-// Optimized with new scroll tracer
-window.addEventListener('scroll', onScroll, false);
+// runs updatePositions on scroll
+window.addEventListener('scroll', updatePositions);
 
-// Optimized with appropriate image size and rAF
-// Moved duplicate CSS attributes to style section in index.html
-document.addEventListener('DOMContentLoaded', 
-  window.requestAnimationFrame(function() {
+// Generates the sliding pizzas when the page loads.
+document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 32; i++) {
+  for (var i = 0; i < 200; i++) {
     var elem = document.createElement('img');
-    elem.classList.add('mover');
-    elem.src = "images/pizza_s.png";
+    elem.className = 'mover';
+    elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
-    elem.style.left = ((i % cols) * s) + 'px';
+    elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.getElementById("movingPizzas1").appendChild(elem);
+    document.querySelector("#movingPizzas1").appendChild(elem);
   }
-  window.requestAnimationFrame(updatePositions);
-}));
+  updatePositions();
+});
