@@ -1,4 +1,4 @@
-This readme file is a description of the improvements made to Project 4.  
+This readme file is a description of the improvements made to Project 4.  References for the project are below the improvements description:
 
 The following changes were made to Project P4:
 
