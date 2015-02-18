@@ -526,7 +526,7 @@ document.addEventListener('DOMContentLoaded',
   window.requestAnimationFrame(function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 32; i++) {
+  for (var i = 0; i < 250; i++) {
     var elem = document.createElement('img');
     elem.classList.add('mover');
     elem.src = "images/pizza_s.png";
