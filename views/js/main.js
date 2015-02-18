@@ -434,7 +434,7 @@ var resizePizzas = function(size) {
     return dx;
   }
 
-  // Took some variables out from the loop
+  // Variables taken out of the loop.
   function changePizzaSizes(size) {
     var randPizzaContainers = document.getElementsByClassName("randomPizzaContainer");
     var dx = determineDx(randPizzaContainers[3], size);
@@ -454,7 +454,7 @@ var resizePizzas = function(size) {
 
 window.performance.mark("mark_start_generating");
 
-// Optimized with rAF
+// Optimized
 var pizzasDiv = document.getElementById("randomPizzas");
 window.requestAnimationFrame(function() {
   for (var i = 2; i < 100; i++) {
@@ -478,7 +478,7 @@ function logAverageFrame(times) {
   console.log("Average time to generate last 10 frames: " + sum / 10 + "ms");
 }
 
-// items has taken out from the loop since it's value doesn't change
+// items taken out of the loop, the value doesn't change
 var items = document.getElementsByClassName('mover'),
     lastScrollY = 0,
     ticking = false;
@@ -507,10 +507,12 @@ function updatePositions() {
 window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
+//Changed # of pizzas to 32
+//Optimized image for background pizza
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 35; i++) {
+  for (var i = 0; i < 3; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza_s.png";
@@ -521,6 +523,8 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
+
+  //moved-they are not created until the .mover class is loaded above.
   items = document.querySelectorAll('.mover');
   numOfItems = items.length;
 
