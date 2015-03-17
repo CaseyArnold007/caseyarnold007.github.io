@@ -99,10 +99,10 @@ var education = {
     "school": [
 
     {
-  "title": "Front End Web Developer",
+  "title": "https://www.udacity.com/course/nd001",
   "school": "Udacity",
   "dates": "2014",
-  "url": "https://www.udacity.com/course/nd001",
+  "url": "Front End Web Developer",
 }
   ]
   };
